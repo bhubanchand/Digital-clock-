@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Live Digital Clock</title>
+    <style>
+      body {
+        background-color: #f1f1f1;
+      }
+
+      .clock {
+        font-size: 48px;
+        text-align: center;
+        margin-top: 200px;
+        color: #333;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock" id="clock"></div>
+
+    <script>
+      function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var time = hours + ':' + addZero(minutes) + ':' + addZero(seconds);
+        document.getElementById('clock').textContent = time;
+        setTimeout(updateClock, 1000); // Update every second
+      }
+
+      function addZero(num) {
+        return (num < 10 ? '0' : '') + num;
+      }
+
+      updateClock(); // Start the clock immediately
+    </script>
+  </body>
+</html>
